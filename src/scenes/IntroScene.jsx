@@ -1,14 +1,30 @@
 import { useEffect, useState } from "react";
 import bgImage from "../assets/desert-night-stars.webp";
 import { INTRO_BEATS } from "../data/content";
+import { playSfx, stopSfx } from "../utils/sfx";
 import "./IntroScene.css";
-
-const BEAT_DURATION = 2800;
 
 export default function IntroScene({ onDone }) {
   const [beatIdx, setBeatIdx] = useState(0);
+  const beat = INTRO_BEATS[beatIdx];
+
+  useEffect(() => {
+    playSfx("desertNight", { volume: 0.35 });
+    return () => {
+      stopSfx("desertNight");
+      stopSfx("campfireHum");
+    };
+  }, []);
 
   const next = () => {
+    if (beatIdx === 0) {
+      // "Chillin' like a villain" — campfire hum kicks in
+      playSfx("campfireHum", { volume: 0.3 });
+    } else {
+      // "Look up in the sky" — hum cuts out, thunder crashes
+      stopSfx("campfireHum");
+      playSfx("thunder", { volume: 0.5 });
+    }
     if (beatIdx < INTRO_BEATS.length - 1) {
       setBeatIdx((i) => i + 1);
     } else {
@@ -16,21 +32,17 @@ export default function IntroScene({ onDone }) {
     }
   };
 
-  useEffect(() => {
-    const t = setTimeout(next, BEAT_DURATION);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [beatIdx]);
-
   return (
-    <div className="intro-scene" onClick={next}>
+    <div className="intro-scene">
       <img src={bgImage} alt="" className="intro-bg" draggable={false} />
       <div className="intro-bg-fade" />
       <div className="intro-text-box">
         <p key={beatIdx} className="intro-text">
-          {INTRO_BEATS[beatIdx]}
+          {beat.text}
         </p>
-        <div className="intro-tap-hint">tap to continue</div>
+        <button className="intro-continue-btn" onClick={next} type="button">
+          {beat.button}
+        </button>
       </div>
     </div>
   );

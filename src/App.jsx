@@ -24,17 +24,24 @@ function App() {
     setSceneIdx(SCENES.length - 1);
   };
 
-  return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      <TopBar onSkip={skipToWall} showSkip={scene !== "cover" && scene !== "wall"} />
+  const goHome = () => {
+    trackEvent("logo_home_clicked", { from: scene });
+    setSceneIdx(0);
+  };
 
-      <SceneTransition sceneKey={scene}>
-        {scene === "cover" && <CoverScene onDone={goNext} />}
-        {scene === "intro" && <IntroScene onDone={goNext} />}
-        {scene === "tictac" && <TicTacScene onDone={goNext} />}
-        {scene === "dialogue" && <DialogueScene onDone={goNext} />}
-        {scene === "wall" && <TelegramWallScene />}
-      </SceneTransition>
+  return (
+    <div className="stage-outer">
+      <div className="stage">
+        <TopBar onSkip={skipToWall} onHome={goHome} showSkip={scene !== "cover" && scene !== "wall"} />
+
+        <SceneTransition sceneKey={scene}>
+          {scene === "cover" && <CoverScene onDone={goNext} />}
+          {scene === "intro" && <IntroScene onDone={goNext} />}
+          {scene === "tictac" && <TicTacScene onDone={goNext} />}
+          {scene === "dialogue" && <DialogueScene onDone={goNext} />}
+          {scene === "wall" && <TelegramWallScene />}
+        </SceneTransition>
+      </div>
     </div>
   );
 }

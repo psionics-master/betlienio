@@ -1,0 +1,26 @@
+.float-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.float-item {
+  position: absolute;
+  height: auto;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.5));
+  animation-name: float-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.float-item--round {
+  border-radius: 50%;
+  border: 1.5px solid rgba(167, 139, 250, 0.4);
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.35);
+}
+
+@keyframes float-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(var(--drift-x), var(--drift-y)) rotate(3deg); }
+}

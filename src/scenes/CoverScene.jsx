@@ -3,6 +3,7 @@ import bgImage from "../assets/Cover.webp";
 import titleImg from "../assets/Betlient.webp";
 import btnImg from "../assets/StartMine.webp";
 import { trackEvent } from "../utils/analytics";
+import { playSfx } from "../utils/sfx";
 import "./CoverScene.css";
 
 const AUTO_ENTER_DELAY = 4000;
@@ -19,11 +20,13 @@ export default function CoverScene({ onDone }) {
     setAdvancing(true);
     trackEvent("start_mining", { source });
     setBtnPress(true);
+    playSfx("teleport", { volume: 0.5 });
     clearTimeout(autoTimerRef.current);
 
     setTimeout(() => {
       setBtnPress(false);
       setHoloActive(true);
+      playSfx("ticTak", { volume: 0.45 });
     }, 140);
 
     setTimeout(() => {

@@ -1,0 +1,51 @@
+.moon-eye-wrap {
+  position: relative;
+  width: clamp(160px, 46vw, 260px);
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+}
+
+.moon-eye-moon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 22px rgba(255, 0, 200, 0.3)) drop-shadow(0 0 40px rgba(0, 200, 255, 0.18));
+}
+
+.moon-eye-glow {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  width: 34%;
+  height: 34%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(80, 255, 80, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.moon-eye-glow--active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.25);
+  animation: moon-eye-glow-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes moon-eye-glow-pulse {
+  0%, 100% { filter: blur(8px) brightness(1); }
+  50% { filter: blur(12px) brightness(1.5); }
+}
+
+.moon-eye-blink {
+  position: absolute;
+  left: 50%;
+  top: 3%;
+  width: 22%;
+  height: 18%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-size: 800% 400%;
+  background-repeat: no-repeat;
+}
