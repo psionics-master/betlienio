@@ -1,0 +1,53 @@
+/* TransTetra — animated sprite UFO (6 cols × 4 rows = 24 frames) */
+
+.trans-tetra {
+  position: absolute;
+  pointer-events: none;
+  width: clamp(52px, 8vw, 96px);
+  height: clamp(52px, 8vw, 96px);
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 8px rgba(120, 80, 255, 0.6))
+          drop-shadow(0 0 4px rgba(0, 200, 255, 0.4));
+  overflow: hidden;
+}
+
+.trans-tetra-sprite {
+  display: block;
+  width: 600%;   /* 6 columns */
+  height: 400%;  /* 4 rows */
+  image-rendering: auto;
+  animation: transTetraSpin 2s steps(1) infinite;
+}
+
+/* Step through 24 frames: 6 cols × 4 rows, row by row.
+   translate() % is relative to the ELEMENT's own size (600%×400% of parent),
+   so each column step = 1/6 = 16.6667%, each row step = 1/4 = 25%. */
+@keyframes transTetraSpin {
+  0%       { transform: translate(0%, 0%); }
+  4.1667%  { transform: translate(-16.6667%, 0%); }
+  8.3333%  { transform: translate(-33.3333%, 0%); }
+  12.5%    { transform: translate(-50%, 0%); }
+  16.6667% { transform: translate(-66.6667%, 0%); }
+  20.8333% { transform: translate(-83.3333%, 0%); }
+  /* Row 2 */
+  25%      { transform: translate(0%, -25%); }
+  29.1667% { transform: translate(-16.6667%, -25%); }
+  33.3333% { transform: translate(-33.3333%, -25%); }
+  37.5%    { transform: translate(-50%, -25%); }
+  41.6667% { transform: translate(-66.6667%, -25%); }
+  45.8333% { transform: translate(-83.3333%, -25%); }
+  /* Row 3 */
+  50%      { transform: translate(0%, -50%); }
+  54.1667% { transform: translate(-16.6667%, -50%); }
+  58.3333% { transform: translate(-33.3333%, -50%); }
+  62.5%    { transform: translate(-50%, -50%); }
+  66.6667% { transform: translate(-66.6667%, -50%); }
+  70.8333% { transform: translate(-83.3333%, -50%); }
+  /* Row 4 */
+  75%      { transform: translate(0%, -75%); }
+  79.1667% { transform: translate(-16.6667%, -75%); }
+  83.3333% { transform: translate(-33.3333%, -75%); }
+  87.5%    { transform: translate(-50%, -75%); }
+  91.6667% { transform: translate(-66.6667%, -75%); }
+  95.8333% { transform: translate(-83.3333%, -75%); }
+}

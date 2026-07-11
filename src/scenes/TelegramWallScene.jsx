@@ -24,7 +24,6 @@ const ASTEROID_FIELD = [
 
 export default function TelegramWallScene() {
   const [minePressed, setMinePressed] = useState(false);
-  const [turboPressed, setTurboPressed] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,12 +36,6 @@ export default function TelegramWallScene() {
     setMinePressed(true);
     playSfx("miningStart", { volume: 0.5 });
     setTimeout(() => setMinePressed(false), 160);
-  };
-
-  const pressTurbo = () => {
-    setTurboPressed(true);
-    playSfx("coinPopBig", { volume: 0.5 });
-    setTimeout(() => setTurboPressed(false), 160);
   };
 
   return (
@@ -73,27 +66,14 @@ export default function TelegramWallScene() {
             <SpinningCoin fast />
           </div>
 
-          <div className="wall-rig-stats">
-            <div className="wall-stat-row">
-              <span className="wall-stat-label">RATE</span>
-              <span className="wall-stat-value">412.80/s</span>
-            </div>
-            <div className="wall-stat-row">
-              <span className="wall-stat-label">MINED</span>
-              <span className="wall-stat-value">2.4M</span>
-            </div>
-            <div className="wall-boost-badge">BOOST Lv.9</div>
-          </div>
-
           <button
-            className={`wall-turbo-btn${turboPressed ? " wall-turbo-btn--pressed" : ""}`}
-            onClick={pressTurbo}
+            className={`wall-mine-btn${minePressed ? " wall-mine-btn--pressed" : ""}`}
+            onClick={pressDecorativeMine}
             type="button"
-            aria-label="Turbo boost preview"
+            aria-label="Start Mining preview"
           >
-            <span className="wall-turbo-ring" />
-            <span className="wall-turbo-icon">⚡</span>
-            <span className="wall-turbo-label">TURBO BOOST</span>
+            <img src={startMineImg} alt="Start Mining" className="wall-mine-btn__img" draggable={false} />
+            <span className="wall-mine-btn__shimmer" />
           </button>
         </div>
       </div>
@@ -106,16 +86,6 @@ export default function TelegramWallScene() {
           ))}
         </h1>
         <p className="wall-body">{WALL_COPY.body}</p>
-
-        <button
-          className={`wall-mine-btn${minePressed ? " wall-mine-btn--pressed" : ""}`}
-          onClick={pressDecorativeMine}
-          type="button"
-          aria-label="Start Mining preview"
-        >
-          <img src={startMineImg} alt="Start Mining" className="wall-mine-btn__img" draggable={false} />
-          <span className="wall-mine-btn__shimmer" />
-        </button>
 
         <a
           className="wall-cta"

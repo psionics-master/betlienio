@@ -9,16 +9,14 @@ import UFO2 from "../assets/ufo2.webp";
 import UFO3 from "../assets/ufo3.webp";
 import UFO4 from "../assets/ufo4.webp";
 import UFO5 from "../assets/ufo5.webp";
-import UFO6 from "../assets/ufo6.webp";
-import UFO7 from "../assets/ufo7.webp";
-import UFO8 from "../assets/ufo8.webp";
-import UFO9 from "../assets/ufo9.webp";
-import UFO10 from "../assets/ufo10.webp";
-import UFO11 from "../assets/ufo11.webp";
 
+import trandsTetra from "../assets/trands_tetra.png";
+import "./TransTetra.css";
 import "./BetUfoFlight.css";
 
-const IMGS = [UFO1, UFO2, UFO3, UFO4, UFO5, UFO6, UFO7, UFO8, UFO9, UFO10, UFO11];
+// Curated to the approved ship designs: metallic saucer, black triangle,
+// cigar ship, TicTac capsule, plasma jellyfish.
+const IMGS = [UFO1, UFO2, UFO3, UFO4, UFO5];
 const PH_IN = 0;
 const PH_MOON = 1;
 const PH_OUT = 2;
@@ -169,18 +167,30 @@ function tickMoonPhys(p, dtMs) {
   p.erraticTimer += dtMs;
 
   if (p.stateTimer > p.nextChange) {
+    const prevState = p.state;
     const r = Math.random();
-    if (r < 0.4) {
+    if (r < 0.28) {
       p.state = "orbiting";
       p.orbitAngle = Math.atan2(p.y - MC_Y, p.x - MC_X);
       p.orbitRadius = 14 + Math.random() * 12;
-    } else if (r < 0.75) {
+    } else if (r < 0.5) {
       p.state = "roaming";
-    } else {
+    } else if (r < 0.72) {
       p.state = "erratic";
+    } else {
+      // "stop and inspect" — nearly full stop for a beat before the next move
+      p.state = "hovering";
+    }
+    // Coming out of a hover, snap straight to speed instead of easing in —
+    // reads as an instant acceleration rather than a gradual drift-off.
+    if (prevState === "hovering" && p.state !== "hovering") {
+      const burstAngle = Math.random() * Math.PI * 2;
+      const burstSpeed = p.maxSpeed * (0.75 + Math.random() * 0.25);
+      p.vx = Math.cos(burstAngle) * burstSpeed;
+      p.vy = Math.sin(burstAngle) * burstSpeed * 0.6;
     }
     p.stateTimer = 0;
-    p.nextChange = 2500 + Math.random() * 5000;
+    p.nextChange = p.state === "hovering" ? 900 + Math.random() * 1400 : 2500 + Math.random() * 5000;
   }
 
   let ax = 0;
@@ -214,6 +224,11 @@ function tickMoonPhys(p, dtMs) {
       p.orbitAngle = newAngle;
       break;
     }
+    case "hovering":
+      // Hard damping — parked in place, "inspecting" the scene below.
+      p.vx *= 0.82;
+      p.vy *= 0.82;
+      break;
     default:
       break;
   }
@@ -382,10 +397,26 @@ function UfoUnit({ st }) {
   );
 }
 
-// 4 staggered UFOs flying to/from an Earth in the top-right corner — same
-// routes as the Bet screen's moon-canvas. (The source also mixes in a 4th
-// "TransTetra" sprite-sheet variant, but that asset alone is ~2.7MB — too
-// heavy for a marketing page, so this uses a regular UFO instead.)
+function TransTetraUnit({ st }) {
+  return (
+    <div
+      className="trans-tetra"
+      style={{
+        left: `${st.x}%`,
+        top: `${st.y}%`,
+        transform: `translate(-50%, -50%) scale(${st.s}) rotate(${st.r}deg)`,
+        opacity: st.o,
+        zIndex: 4,
+      }}
+    >
+      <img className="trans-tetra-sprite" src={trandsTetra} alt="" draggable={false} />
+    </div>
+  );
+}
+
+// 3 staggered regular UFOs (random from the approved pool) + 1 animated
+// TransTetra sprite-sheet triangle — flying to/from an Earth in the
+// top-right corner, same routes as the Bet screen's moon-canvas.
 export default function BetUfoFlight() {
   const st0 = useUfoInstance(400);
   const st1 = useUfoInstance(3500);
@@ -397,7 +428,7 @@ export default function BetUfoFlight() {
       <UfoUnit st={st0} />
       <UfoUnit st={st1} />
       <UfoUnit st={st2} />
-      <UfoUnit st={st3} />
+      <TransTetraUnit st={st3} />
     </>
   );
 }

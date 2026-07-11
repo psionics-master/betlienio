@@ -73,7 +73,7 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
-  margin-top: 8%;
+  margin-top: 16%;
 }
 
 .wall-rig-frame {
@@ -106,129 +106,6 @@
   width: 30%;
   transform: translateX(-50%);
   z-index: 2;
-}
-
-/* stats readout sits over the rig's screen panel */
-.wall-rig-stats {
-  position: absolute;
-  top: 38%;
-  left: 50%;
-  width: 52%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 6px 4px;
-  background: rgba(10, 10, 30, 0.85);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 3;
-}
-
-.wall-stat-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  font-family: "Exo 2", sans-serif;
-}
-
-.wall-stat-label {
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.wall-stat-value {
-  font-size: 10px;
-  font-weight: 800;
-  background: linear-gradient(to right, #00c8ff, #0099cc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-variant-numeric: tabular-nums;
-}
-
-.wall-boost-badge {
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  color: #ffd700;
-  text-shadow: 0 0 6px rgba(255, 200, 50, 0.5);
-  animation: wall-badge-pulse 2s ease-in-out infinite;
-}
-
-@keyframes wall-badge-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-/* turbo boost — decorative, sits over the rig's lower bar */
-.wall-turbo-btn {
-  position: absolute;
-  top: 68%;
-  left: 50%;
-  width: 62%;
-  transform: translateX(-50%);
-  padding: 5px 8px;
-  border-radius: 10px;
-  background: rgba(10, 10, 20, 0.85);
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  cursor: pointer;
-  overflow: hidden;
-  z-index: 3;
-  transition: transform 0.12s ease;
-}
-
-.wall-turbo-btn--pressed {
-  transform: translateX(-50%) scale(0.94);
-}
-
-.wall-turbo-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  border: 1.5px solid transparent;
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    rgba(255, 160, 0, 0.15) 0deg,
-    rgba(255, 200, 50, 1) 60deg,
-    rgba(255, 140, 0, 0.9) 120deg,
-    rgba(255, 200, 50, 0.15) 180deg,
-    rgba(255, 160, 0, 1) 240deg,
-    rgba(255, 220, 80, 0.9) 300deg,
-    rgba(255, 160, 0, 0.15) 360deg
-  );
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
-  padding: 1.5px;
-  animation: wall-turbo-spin 3s linear infinite;
-}
-
-@keyframes wall-turbo-spin {
-  to { transform: rotate(360deg); }
-}
-
-.wall-turbo-icon {
-  position: relative;
-  font-size: 9px;
-  color: #ffd700;
-}
-
-.wall-turbo-label {
-  position: relative;
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  color: #ffd700;
-  text-shadow: 0 0 6px rgba(255, 200, 50, 0.6);
 }
 
 /* bigger secondary coin, tucked behind the rig's right edge so the rig
@@ -292,12 +169,15 @@
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* ── decorative gold "Start Mining" button — click sound only, no action ── */
+/* ── decorative gold "Start Mining" button — sits in the rig's bottom
+   black-rectangle slot; click sound only, no action ── */
 .wall-mine-btn {
-  position: relative;
-  display: block;
-  width: min(60vw, 240px);
-  margin: 0 auto 12px;
+  position: absolute;
+  top: 69%;
+  left: 50%;
+  width: 58%;
+  transform: translateX(-50%);
+  z-index: 3;
   background: transparent;
   border: none;
   padding: 0;
@@ -308,7 +188,7 @@
 }
 
 .wall-mine-btn--pressed {
-  transform: scale(0.93);
+  transform: translateX(-50%) scale(0.93);
 }
 
 .wall-mine-btn__img {
