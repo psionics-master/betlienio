@@ -1,0 +1,8 @@
+.bet-ufo-flight {
+  position: absolute;
+  pointer-events: none;
+  width: 68px;
+  height: auto;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 12px rgba(0, 230, 255, 0.75)) drop-shadow(0 0 22px rgba(0, 230, 255, 0.35));
+}

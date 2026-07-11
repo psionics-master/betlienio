@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import bgImage from "../assets/desert-night-stars.webp";
+import SceneLogo from "../components/SceneLogo";
 import { INTRO_BEATS } from "../data/content";
 import { playSfx, stopSfx } from "../utils/sfx";
 import "./IntroScene.css";
@@ -36,6 +37,7 @@ export default function IntroScene({ onDone }) {
     <div className="intro-scene">
       <img src={bgImage} alt="" className="intro-bg" draggable={false} />
       <div className="intro-bg-fade" />
+      <SceneLogo />
       <div className="intro-text-box">
         <p key={beatIdx} className="intro-text">
           {beat.text}

@@ -1,0 +1,81 @@
+.pu-ufo {
+  position: absolute;
+  width: 90px;
+  height: auto;
+  filter: drop-shadow(0 0 14px rgba(0, 255, 225, 0.6));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* appear — mounted but invisible, matching source's opacity:0 "appear" state */
+.pu-ufo--appear {
+  left: 85%;
+  top: 5%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.1);
+}
+
+/* flight — position/scale/rotation are driven every frame by PersistentUfo.jsx's
+   RAF loop (ported from the source's getTicTacPoint waypoint algorithm) */
+.pu-ufo--flight {
+  opacity: 1;
+}
+
+/* crash — ported from source's ufoCrash keyframe */
+.pu-ufo--crash {
+  left: 50%;
+  opacity: 1;
+  filter: drop-shadow(0 0 24px rgba(0, 255, 225, 0.8)) brightness(1.3);
+  animation: pu-crash 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pu-crash {
+  0%   { top: 32%; transform: translate(-50%, -50%) scale(0.48) rotate(0deg); }
+  55%  { top: 44%; transform: translate(-50%, -50%) scale(0.53) rotate(14deg); }
+  75%  { top: 36%; transform: translate(-50%, -50%) scale(0.5) rotate(-7deg); }
+  100% { top: 38%; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+}
+
+/* pause / hover — idling on the ground, ported from source's ufoSmoke */
+.pu-ufo--pause,
+.pu-ufo--hover {
+  left: 50%;
+  top: 38%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+  animation: pu-hover 3s ease-in-out infinite alternate;
+}
+
+@keyframes pu-hover {
+  0%   { filter: drop-shadow(0 0 6px rgba(0, 255, 225, 0.27)) brightness(0.85); }
+  100% { filter: drop-shadow(0 0 12px rgba(0, 255, 225, 0.53)) brightness(0.95); }
+}
+
+/* ping — "activated" burst the instant hybridScan confirms the player */
+.pu-ufo--ping {
+  left: 50%;
+  opacity: 1;
+  animation: pu-ping 2.6s ease-in-out infinite;
+}
+
+@keyframes pu-ping {
+  0%   { top: 38%; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); filter: drop-shadow(0 0 8px rgba(0, 255, 225, 0.4)); }
+  15%  { top: 30%; transform: translate(-50%, -50%) scale(0.62) rotate(-4deg); filter: drop-shadow(0 0 26px rgba(0, 255, 225, 1)) brightness(1.3); }
+  30%  { top: 34%; transform: translate(-46%, -50%) scale(0.56) rotate(3deg); filter: drop-shadow(0 0 20px rgba(0, 255, 225, 0.9)) brightness(1.2); }
+  50%  { top: 30%; transform: translate(-54%, -50%) scale(0.6) rotate(-3deg); filter: drop-shadow(0 0 24px rgba(0, 255, 225, 0.95)) brightness(1.25); }
+  70%  { top: 36%; transform: translate(-50%, -50%) scale(0.53) rotate(2deg); filter: drop-shadow(0 0 14px rgba(0, 255, 225, 0.6)) brightness(1.05); }
+  100% { top: 38%; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); filter: drop-shadow(0 0 8px rgba(0, 255, 225, 0.4)); }
+}
+
+/* drift — gentle bounded side-to-side motion, always stays in frame */
+.pu-ufo--drift {
+  left: 50%;
+  opacity: 1;
+  animation: pu-drift 10s ease-in-out infinite alternate;
+}
+
+@keyframes pu-drift {
+  0%   { top: 37%; transform: translate(-58%, -50%) scale(0.46) rotate(-2deg); filter: drop-shadow(0 0 9px rgba(0, 255, 225, 0.4)); }
+  50%  { top: 39%; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); filter: drop-shadow(0 0 11px rgba(0, 255, 225, 0.5)); }
+  100% { top: 37%; transform: translate(-42%, -50%) scale(0.46) rotate(2deg); filter: drop-shadow(0 0 9px rgba(0, 255, 225, 0.4)); }
+}

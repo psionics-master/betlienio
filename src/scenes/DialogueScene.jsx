@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import bgImage from "../assets/desert-night-stars_up.webp";
-import ufoImg from "../assets/tictac-ufo.png";
 import blurppzDefault from "../assets/Blurppz.webp";
 import blurppzThink from "../assets/BlurppzThink.webp";
 import blurppzCoin from "../assets/BlurppzCoin.webp";
@@ -15,9 +14,8 @@ const PORTRAITS = {
 };
 
 const TYPE_MS = 18;
-const HYBRID_SCAN_IDX = DIALOGUE_SCENES.findIndex((s) => s.type === "hybridScan");
 
-export default function DialogueScene({ onDone }) {
+export default function DialogueScene({ onDone, onSceneIdxChange }) {
   const [sceneIdx, setSceneIdx] = useState(0);
   const [lineIdx, setLineIdx] = useState(0);
   const [typed, setTyped] = useState("");
@@ -29,10 +27,12 @@ export default function DialogueScene({ onDone }) {
   const isTyping = typed.length < fullLine.length;
   const isLastLine = lineIdx >= scene.text.length - 1;
 
-  // Crashed TicTac's behavior stage: idling at the crash site -> a brief
-  // "activated" scan burst exactly when hybridScan reveals the player is a
-  // hybrid -> a gentle bounded drift for the rest of the conversation.
-  const ufoStage = sceneIdx < HYBRID_SCAN_IDX ? "hover" : sceneIdx === HYBRID_SCAN_IDX ? "ping" : "drift";
+  // Report the current scene index up to App so the persistent UFO/fog
+  // layers (mounted outside this component) can stage themselves correctly.
+  useEffect(() => {
+    onSceneIdxChange?.(sceneIdx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sceneIdx]);
 
   // Blurppz descends the first time he's needed (meetAlien -> alienFirstSpeech).
   // He then stays mounted for every later scene — only the portrait `src`
@@ -105,10 +105,6 @@ export default function DialogueScene({ onDone }) {
     <div className="dialogue-scene">
       <img src={bgImage} alt="" className="dialogue-bg" draggable={false} />
       <div className="dialogue-bg-fade" />
-
-      {/* crashed TicTac stays in frame at the exact spot it landed, then
-          idles/activates/drifts in place across the conversation */}
-      <img src={ufoImg} alt="" className={`dialogue-ufo-prop dialogue-ufo-prop--${ufoStage}`} draggable={false} />
 
       {scene.portrait && (
         <img

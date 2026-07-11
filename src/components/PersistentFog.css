@@ -1,0 +1,51 @@
+.pf-fog-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6%;
+  height: 60%;
+  overflow: visible;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pf-fog-container--in {
+  opacity: 0.85;
+  transition: opacity 1.4s ease-in;
+}
+
+.pf-fog-container--out {
+  opacity: 0;
+  transition: opacity 5.5s ease-in-out;
+}
+
+.pf-fog {
+  position: absolute;
+  width: 180%;
+  height: auto;
+  min-height: 45%;
+  object-fit: cover;
+  object-position: bottom center;
+  bottom: 0;
+}
+
+.pf-fog--1 {
+  left: -50%;
+  animation: pf-fog-drift-1 12s ease-in-out infinite;
+}
+
+.pf-fog--2 {
+  left: -80%;
+  animation: pf-fog-drift-2 18s ease-in-out infinite;
+}
+
+@keyframes pf-fog-drift-1 {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(25%); }
+}
+
+@keyframes pf-fog-drift-2 {
+  0%, 100% { transform: translateX(0) scaleX(-1); }
+  50% { transform: translateX(35%) scaleX(-1); }
+}
