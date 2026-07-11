@@ -64,48 +64,22 @@
   pointer-events: none;
 }
 
-.wall-coin-burst {
-  position: absolute;
-  top: 8%;
-  left: 0;
-  right: 0;
-  height: 36%;
-  z-index: 4;
-  pointer-events: none;
-}
 
-.wall-coin-particle {
-  position: absolute;
-  top: 55%;
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  opacity: 0;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
-  animation: wall-coin-pop 2.2s ease-out infinite;
-}
-
-@keyframes wall-coin-pop {
-  0%   { opacity: 0; transform: translate(-50%, 0) scale(0.4) rotate(0deg); }
-  12%  { opacity: 1; }
-  55%  { opacity: 0.9; transform: translate(-50%, -85px) scale(1) rotate(180deg); }
-  100% { opacity: 0; transform: translate(-50%, -130px) scale(0.7) rotate(320deg); }
-}
-
-/* ── mining rig, big and front-and-center, at max glow ── */
+/* ── mining rig, big and centered, at max glow. The side coin sits behind
+   it (lower z-index) so the rig visually overlaps its inner edge. ── */
 .wall-rig-wrap {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4%;
   z-index: 5;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 
 .wall-rig-frame {
   position: relative;
-  width: min(74vw, 300px);
+  z-index: 2;
+  width: min(96vw, 440px);
   aspect-ratio: 874 / 957;
 }
 
@@ -257,10 +231,15 @@
   text-shadow: 0 0 6px rgba(255, 200, 50, 0.6);
 }
 
-/* bigger secondary coin off to the side, pumping */
+/* bigger secondary coin, tucked behind the rig's right edge so the rig
+   overlaps it a bit, pumping */
 .wall-side-coin {
-  width: clamp(74px, 21vw, 116px);
-  align-self: center;
+  position: absolute;
+  z-index: 1;
+  right: 2%;
+  top: 40%;
+  transform: translateY(-50%);
+  width: clamp(130px, 36vw, 200px);
 }
 
 .wall-side-coin-img {

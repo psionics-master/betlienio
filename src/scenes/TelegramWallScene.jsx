@@ -22,15 +22,6 @@ const ASTEROID_FIELD = [
   { src: asteroid2, size: "36px", top: "70%", left: "88%", duration: 17, delay: 3, opacity: 0.5, driftX: 10, driftY: -10 },
 ];
 
-const COIN_BURST = [
-  { left: "30%", delay: 0 },
-  { left: "45%", delay: 0.4 },
-  { left: "58%", delay: 0.8 },
-  { left: "38%", delay: 1.3 },
-  { left: "66%", delay: 0.2 },
-  { left: "50%", delay: 1.7 },
-];
-
 export default function TelegramWallScene() {
   const [minePressed, setMinePressed] = useState(false);
   const [turboPressed, setTurboPressed] = useState(false);
@@ -38,7 +29,7 @@ export default function TelegramWallScene() {
   useEffect(() => {
     const interval = setInterval(() => {
       playSfx("coinPop", { volume: 0.22 });
-    }, 1200);
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
@@ -70,20 +61,11 @@ export default function TelegramWallScene() {
 
       <SceneLogo />
 
-      <div className="wall-coin-burst" aria-hidden="true">
-        {COIN_BURST.map((c, i) => (
-          <img
-            key={i}
-            src={coinImg}
-            alt=""
-            className="wall-coin-particle"
-            style={{ left: c.left, animationDelay: `${c.delay}s` }}
-            draggable={false}
-          />
-        ))}
-      </div>
-
       <div className="wall-rig-wrap">
+        <div className="wall-side-coin">
+          <img src={coinImg} alt="" className="wall-side-coin-img" draggable={false} />
+        </div>
+
         <div className="wall-rig-frame">
           <img src={miningRigImg} alt="" className="wall-rig" draggable={false} />
 
@@ -113,10 +95,6 @@ export default function TelegramWallScene() {
             <span className="wall-turbo-icon">⚡</span>
             <span className="wall-turbo-label">TURBO BOOST</span>
           </button>
-        </div>
-
-        <div className="wall-side-coin">
-          <img src={coinImg} alt="" className="wall-side-coin-img" draggable={false} />
         </div>
       </div>
 
