@@ -1,0 +1,114 @@
+.wall-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wall-content {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  padding: 24px 28px;
+  text-align: center;
+}
+
+.wall-spheres {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.wall-sphere {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--cyan) 45%, transparent 75%);
+  box-shadow: 0 0 16px var(--cyan);
+  animation: wall-sphere-pulse 2.4s ease-in-out infinite;
+}
+
+.wall-sphere--1 {
+  background: radial-gradient(circle at 35% 30%, #fff, var(--cyan) 45%, transparent 75%);
+  box-shadow: 0 0 16px var(--cyan);
+  animation-delay: 0s;
+}
+
+.wall-sphere--2 {
+  background: radial-gradient(circle at 35% 30%, #fff, var(--purple) 45%, transparent 75%);
+  box-shadow: 0 0 16px var(--purple);
+  animation-delay: 0.4s;
+}
+
+.wall-sphere--3 {
+  background: radial-gradient(circle at 35% 30%, #fff, var(--magenta) 45%, transparent 75%);
+  box-shadow: 0 0 16px var(--magenta);
+  animation-delay: 0.8s;
+}
+
+@keyframes wall-sphere-pulse {
+  0%, 100% { transform: scale(0.85); opacity: 0.65; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.wall-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.wall-heading {
+  margin: 0 0 14px;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.wall-body {
+  margin: 0 0 26px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.wall-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #229ed9, #1b7fb8);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(34, 158, 217, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  animation: wall-cta-glow 2.2s ease-in-out infinite;
+}
+
+@keyframes wall-cta-glow {
+  0%, 100% { box-shadow: 0 6px 24px rgba(34, 158, 217, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08) inset; }
+  50% { box-shadow: 0 6px 34px rgba(34, 158, 217, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.12) inset; }
+}
+
+.wall-cta:active {
+  transform: scale(0.97);
+}
+
+.wall-legal {
+  margin: 20px 0 0;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.45);
+}

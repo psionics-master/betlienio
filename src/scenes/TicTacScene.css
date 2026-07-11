@@ -1,0 +1,97 @@
+.tictac-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.tictac-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tictac-scene--crash {
+  animation: tictac-shake 0.5s ease;
+}
+
+@keyframes tictac-shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 3px); }
+  40% { transform: translate(5px, -4px); }
+  60% { transform: translate(-4px, 4px); }
+  80% { transform: translate(3px, -2px); }
+}
+
+.tictac-ufo {
+  position: absolute;
+  width: min(46vw, 220px);
+  filter: drop-shadow(0 0 20px rgba(0, 224, 255, 0.6));
+}
+
+.tictac-ufo--flight {
+  top: -10%;
+  right: -20%;
+  animation: tictac-fly-in 1.5s cubic-bezier(0.32, 0.6, 0.4, 1) forwards;
+}
+
+@keyframes tictac-fly-in {
+  0% { top: -15%; right: -25%; transform: rotate(-18deg) scale(0.7); opacity: 0.6; }
+  70% { top: 42%; right: 30%; transform: rotate(-6deg) scale(1.05); opacity: 1; }
+  100% { top: 48%; right: 34%; transform: rotate(-4deg) scale(1); opacity: 1; }
+}
+
+.tictac-ufo--crash,
+.tictac-ufo--settle {
+  top: 48%;
+  right: 34%;
+  transform: translateY(6%) rotate(8deg) scale(0.92);
+  opacity: 0.95;
+  transition: transform 0.4s ease;
+}
+
+.tictac-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  animation: tictac-flash 0.3s ease forwards;
+  mix-blend-mode: screen;
+  z-index: 5;
+}
+
+@keyframes tictac-flash {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.tictac-fog {
+  position: absolute;
+  left: 10%;
+  right: -10%;
+  bottom: -5%;
+  width: 90%;
+  opacity: 0;
+  animation: tictac-fog-in 1.2s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes tictac-fog-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+.tictac-skip-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8%;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  z-index: 6;
+}

@@ -1,0 +1,80 @@
+.dialogue-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.dialogue-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dialogue-bg-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.15) 35%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.dialogue-portrait {
+  position: absolute;
+  left: 50%;
+  bottom: 32%;
+  transform: translateX(-50%);
+  width: min(46vw, 190px);
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 24px rgba(167, 139, 250, 0.35));
+  animation: dialogue-portrait-in 0.4s ease;
+}
+
+@keyframes dialogue-portrait-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.96); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.dialogue-box {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(20, 10, 35, 0.9), rgba(6, 3, 14, 0.94));
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+.dialogue-speaker {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--cyan-2);
+  margin-bottom: 6px;
+}
+
+.dialogue-text {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: pre-line;
+  animation: dialogue-text-in 0.35s ease;
+}
+
+@keyframes dialogue-text-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dialogue-tap-hint {
+  margin-top: 12px;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.4);
+}
