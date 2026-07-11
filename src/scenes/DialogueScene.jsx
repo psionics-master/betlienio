@@ -107,12 +107,15 @@ export default function DialogueScene({ onDone, onSceneIdxChange }) {
       <div className="dialogue-bg-fade" />
 
       {scene.portrait && (
-        <img
-          src={PORTRAITS[scene.portrait]}
-          alt="₿lurppz"
-          className={`dialogue-portrait${alienVisible ? " dialogue-portrait--visible" : ""}`}
-          draggable={false}
-        />
+        <>
+          <div className={`dialogue-beam${alienVisible ? " dialogue-beam--active" : ""}`} aria-hidden="true" />
+          <img
+            src={PORTRAITS[scene.portrait]}
+            alt="₿lurppz"
+            className={`dialogue-portrait${alienVisible ? " dialogue-portrait--visible" : ""}`}
+            draggable={false}
+          />
+        </>
       )}
 
       <div className="dialogue-box">

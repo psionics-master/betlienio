@@ -1,6 +1,6 @@
 .scene-logo {
   position: absolute;
-  top: calc(env(safe-area-inset-top, 0px) + 46px);
+  top: calc(env(safe-area-inset-top, 0px) + clamp(38px, 9vh, 64px));
   left: 50%;
   transform: translateX(-50%);
   width: min(38vw, 150px);
