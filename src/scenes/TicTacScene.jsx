@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import bgImage from "../assets/desert-night-stars.webp";
-import ufoImg from "../assets/tictac-ufo.webp";
+import ufoImg from "../assets/tictac-ufo.png";
 import fogImg from "../assets/fog.webp";
 import { playSfx, stopSfx } from "../utils/sfx";
 import "./TicTacScene.css";

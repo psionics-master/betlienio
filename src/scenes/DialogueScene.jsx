@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import bgImage from "../assets/desert-night-stars_up.webp";
-import ufoImg from "../assets/tictac-ufo.webp";
+import ufoImg from "../assets/tictac-ufo.png";
 import blurppzDefault from "../assets/Blurppz.webp";
 import blurppzThink from "../assets/BlurppzThink.webp";
 import blurppzCoin from "../assets/BlurppzCoin.webp";
@@ -15,6 +15,7 @@ const PORTRAITS = {
 };
 
 const TYPE_MS = 18;
+const HYBRID_SCAN_IDX = DIALOGUE_SCENES.findIndex((s) => s.type === "hybridScan");
 
 export default function DialogueScene({ onDone }) {
   const [sceneIdx, setSceneIdx] = useState(0);
@@ -28,7 +29,14 @@ export default function DialogueScene({ onDone }) {
   const isTyping = typed.length < fullLine.length;
   const isLastLine = lineIdx >= scene.text.length - 1;
 
-  // Blurppz descends the first time he's needed (meetAlien -> alienFirstSpeech)
+  // Crashed TicTac's behavior stage: idling at the crash site -> a brief
+  // "activated" scan burst exactly when hybridScan reveals the player is a
+  // hybrid -> a gentle bounded drift for the rest of the conversation.
+  const ufoStage = sceneIdx < HYBRID_SCAN_IDX ? "hover" : sceneIdx === HYBRID_SCAN_IDX ? "ping" : "drift";
+
+  // Blurppz descends the first time he's needed (meetAlien -> alienFirstSpeech).
+  // He then stays mounted for every later scene — only the portrait `src`
+  // swaps, so the one-shot descend animation never replays.
   useEffect(() => {
     if (scene.portrait && !alienVisible) {
       playSfx("teleport", { volume: 0.4 });
@@ -98,12 +106,12 @@ export default function DialogueScene({ onDone }) {
       <img src={bgImage} alt="" className="dialogue-bg" draggable={false} />
       <div className="dialogue-bg-fade" />
 
-      {/* crashed TicTac stays in frame, idling behind Blurppz */}
-      <img src={ufoImg} alt="" className="dialogue-ufo-prop" draggable={false} />
+      {/* crashed TicTac stays in frame at the exact spot it landed, then
+          idles/activates/drifts in place across the conversation */}
+      <img src={ufoImg} alt="" className={`dialogue-ufo-prop dialogue-ufo-prop--${ufoStage}`} draggable={false} />
 
       {scene.portrait && (
         <img
-          key={scene.portrait}
           src={PORTRAITS[scene.portrait]}
           alt="₿lurppz"
           className={`dialogue-portrait${alienVisible ? " dialogue-portrait--visible" : ""}`}

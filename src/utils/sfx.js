@@ -9,6 +9,9 @@ const files = {
   smokeHiss: "/sfx/hum.mp3",
   campfireHum: "/sfx/hum.mp3",
   thunder: "/sfx/loudThunder.mp3",
+  miningStart: "/sfx/cashMining.mp3",
+  coinPop: "/sfx/coin_pay_small.mp3",
+  coinPopBig: "/sfx/coin_pay_big.mp3",
 };
 
 const loopNames = new Set(["desertNight", "etTalk", "neuro", "ufoHum", "campfireHum"]);

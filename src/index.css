@@ -41,8 +41,9 @@ body {
 /* Centered mobile-aspect stage — the game's art is composed for a tall
    portrait frame. On wide desktop viewports, filling 100vw with
    object-fit:cover crops nearly all the vertical composition away, which
-   reads as "stretched". Instead, cap the stage at a phone-like aspect
-   ratio and letterbox the rest. */
+   reads as "stretched". Cap the stage at a phone-like aspect ratio and
+   letterbox the rest ONLY on desktop-width screens; real phones (portrait,
+   up to tablet width) always get the full bleed width — no black bars. */
 .stage-outer {
   position: fixed;
   inset: 0;
@@ -56,10 +57,15 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
-  max-width: min(100vw, 560px, calc(100dvh * 0.5));
   overflow: hidden;
   background: #000;
-  box-shadow: 0 0 120px rgba(0, 0, 0, 0.9);
+}
+
+@media (min-width: 820px) {
+  .stage {
+    max-width: min(560px, calc(100dvh * 0.52));
+    box-shadow: 0 0 120px rgba(0, 0, 0, 0.9);
+  }
 }
 
 button {

@@ -8,7 +8,7 @@ export default function TopBar({ onSkip, onHome, showSkip }) {
     <div className="topbar">
       <button className="topbar-brand" onClick={onHome} type="button" aria-label="Betlien home">
         <img src={coinImg} alt="" className="topbar-coin" />
-        <span>BETLIEN</span>
+        <span>$BETLIEN</span>
       </button>
       <div className="topbar-actions">
         {showSkip && (
