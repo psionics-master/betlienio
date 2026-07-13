@@ -2,6 +2,21 @@
   command = "npm run build"
   publish = "dist"
 
+# Canonical domain redirect: betlien.com / www.betlien.com -> betlien.io
+# Requires betlien.com and www.betlien.com to be added as custom domains
+# on this Netlify site (and DNS pointed at Netlify) for the Host match to fire.
+[[redirects]]
+  from = "https://betlien.com/*"
+  to = "https://betlien.io/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.betlien.com/*"
+  to = "https://betlien.io/:splat"
+  status = 301
+  force = true
+
 # SPA routing: redirect all routes to index.html with 200 status
 [[redirects]]
   from = "/*"
