@@ -73,7 +73,7 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
-  margin-top: 16%;
+  margin-top: 40%;
 }
 
 .wall-rig-frame {
@@ -101,7 +101,7 @@
 /* coin sits in the rig's circular socket */
 .wall-rig-coin-slot {
   position: absolute;
-  top: 12%;
+  top: 16%;
   left: 50%;
   width: 30%;
   transform: translateX(-50%);
@@ -173,9 +173,9 @@
    black-rectangle slot; click sound only, no action ── */
 .wall-mine-btn {
   position: absolute;
-  top: 69%;
+  top: 66%;
   left: 50%;
-  width: 58%;
+  width: 70%;
   transform: translateX(-50%);
   z-index: 3;
   background: transparent;
@@ -232,7 +232,7 @@
   border-radius: 999px;
   background: linear-gradient(135deg, #2aabee, #229ed9);
   color: #fff;
-  font-size: 15px;
+  font-size: 23px;
   font-weight: 800;
   letter-spacing: 0.3px;
   text-decoration: none;
