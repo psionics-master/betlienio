@@ -10,7 +10,7 @@ import UFO3 from "../assets/ufo3.webp";
 import UFO4 from "../assets/ufo4.webp";
 import UFO5 from "../assets/ufo5.webp";
 
-import trandsTetra from "../assets/trands_tetra.png";
+import trandsTetra from "../assets/trands_tetra.webp";
 import "./TransTetra.css";
 import "./BetUfoFlight.css";
 

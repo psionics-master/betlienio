@@ -111,9 +111,10 @@ export const TAP_TO_CONTINUE_LABEL = "TAP TO COMMUNICATE TELEPATHICALLY";
 
 export const WALL_COPY = {
   eyebrow: "HYBRID DNA TEST",
-  heading: "Human · Alien\nHybrid DNA",
+  heading: "Human · Alien Hybrid DNA",
   body: "The TicTac interface only syncs inside Telegram. Launch the bot to run your Hybrid DNA Test and keep going.",
   cta: "Launch Telegram Bot",
   legal: "Free-to-play. No purchase required. Betlien Coins hold no monetary value and are not financial advice.",
-  marquee: "AVAILABLE ON TELEGRAM  •  WIN BETLIEN & GRAM COINS  •  MINE THE GALAXY  •  BETLIEN  •  ",
+  marqueeRow1: "BETLIEN  •  AVAILABLE ON TELEGRAM  •  ",
+  marqueeRow2: "MINE THE GALAXY  •  PLAY GAMES  •  WIN BETLIEN COINS  •  WIN $GRAM CRYPTO ON TON NETWORK  •  ",
 };

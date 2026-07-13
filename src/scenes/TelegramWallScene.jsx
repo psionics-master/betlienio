@@ -77,9 +77,17 @@ export default function TelegramWallScene() {
           </div>
 
           <div className="wall-rig-marquee">
-            <div className="wall-rig-marquee__track">
-              <span>{WALL_COPY.marquee}</span>
-              <span aria-hidden="true">{WALL_COPY.marquee}</span>
+            <div className="wall-rig-marquee__row">
+              <div className="wall-rig-marquee__track">
+                <span>{WALL_COPY.marqueeRow1}</span>
+                <span aria-hidden="true">{WALL_COPY.marqueeRow1}</span>
+              </div>
+            </div>
+            <div className="wall-rig-marquee__row">
+              <div className="wall-rig-marquee__track wall-rig-marquee__track--reverse">
+                <span>{WALL_COPY.marqueeRow2}</span>
+                <span aria-hidden="true">{WALL_COPY.marqueeRow2}</span>
+              </div>
             </div>
           </div>
 

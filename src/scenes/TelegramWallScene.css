@@ -114,9 +114,9 @@
   position: absolute;
   z-index: 1;
   right: 2%;
-  top: 40%;
+  top: 35%;
   transform: translateY(-50%);
-  width: clamp(130px, 36vw, 200px);
+  width: clamp(91px, 25.2vw, 140px);
 }
 
 .wall-side-coin-img {
@@ -255,16 +255,22 @@
 /* ── AAA arcade-marquee ticker embedded in the rig's screen slot ── */
 .wall-rig-marquee {
   position: absolute;
-  top: 39%;
+  top: 35%;
   left: 50%;
-  width: 27%;
-  height: 15%;
+  width: 29%;
+  height: 22%;
   transform: translateX(-50%);
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4%;
+}
+
+.wall-rig-marquee__row {
   overflow: hidden;
   display: flex;
   align-items: center;
-  border-radius: 2px;
   mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
@@ -274,9 +280,9 @@
   flex-wrap: nowrap;
   white-space: nowrap;
   animation: wall-rig-marquee-scroll 12s linear infinite;
-  font-size: clamp(6.5px, 2vw, 9px);
+  font-size: 16px;
   font-weight: 900;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   background: linear-gradient(90deg, #00ffcc, #ffd700, #ff44cc, #00ccff, #00ffcc);
   background-size: 300% 100%;
@@ -286,9 +292,19 @@
   filter: drop-shadow(0 0 4px rgba(0, 255, 210, 0.6));
 }
 
+.wall-rig-marquee__track--reverse {
+  animation-name: wall-rig-marquee-scroll-reverse;
+  animation-duration: 14s;
+}
+
 @keyframes wall-rig-marquee-scroll {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes wall-rig-marquee-scroll-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
 }
 
 .wall-cta {

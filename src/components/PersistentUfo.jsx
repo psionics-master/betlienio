@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import ufoImg from "../assets/tictac-ufo.png";
+import ufoImg from "../assets/tictac-ufo.webp";
 import { TIC_TAC_DURATION, easeInOut, getTicTacPoint } from "../utils/ticTacFlight";
 import "./PersistentUfo.css";
 
