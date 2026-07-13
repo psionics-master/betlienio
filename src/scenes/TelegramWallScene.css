@@ -222,7 +222,77 @@
   100% { transform: translateX(120%); }
 }
 
+.wall-mine-btn--launching {
+  cursor: default;
+}
+
+.wall-mine-btn--launching .wall-mine-btn__img {
+  opacity: 0.5;
+  filter: grayscale(0.3) brightness(0.75);
+}
+
+.wall-mine-btn__launching {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 255, 210, 0.8);
+  animation: wall-mine-launch-fade 0.9s ease-in-out infinite;
+}
+
+@keyframes wall-mine-launch-fade {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+/* ── AAA arcade-marquee ticker embedded in the rig's screen slot ── */
+.wall-rig-marquee {
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  width: 27%;
+  height: 15%;
+  transform: translateX(-50%);
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.wall-rig-marquee__track {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  animation: wall-rig-marquee-scroll 12s linear infinite;
+  font-size: clamp(6.5px, 2vw, 9px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00ffcc, #ffd700, #ff44cc, #00ccff, #00ffcc);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 210, 0.6));
+}
+
+@keyframes wall-rig-marquee-scroll {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
 .wall-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +307,7 @@
   letter-spacing: 0.3px;
   text-decoration: none;
   box-shadow: 0 6px 24px rgba(34, 158, 217, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  animation: wall-cta-glow 2.2s ease-in-out infinite;
+  animation: wall-cta-glow 2.2s ease-in-out infinite, wall-cta-pulse 1.6s ease-in-out infinite;
 }
 
 @keyframes wall-cta-glow {
@@ -245,8 +315,45 @@
   50% { box-shadow: 0 6px 34px rgba(34, 158, 217, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.12) inset; }
 }
 
+@keyframes wall-cta-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
 .wall-cta:active {
   transform: scale(0.97);
+}
+
+.wall-cta__label {
+  background: linear-gradient(90deg, #fff, #fff8d6, #ffd700, #fff8d6, #fff);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wall-cta-shimmer 2.6s linear infinite;
+}
+
+@keyframes wall-cta-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 260% 50%; }
+}
+
+.wall-cta__spark {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #ffe680;
+  text-shadow: 0 0 8px #ffd700, 0 0 16px rgba(255, 215, 0, 0.7);
+  animation: wall-cta-spark-twinkle 1.8s ease-in-out infinite;
+}
+
+.wall-cta__spark--1 { left: 14px; animation-delay: 0s; }
+.wall-cta__spark--2 { right: 14px; animation-delay: 0.6s; }
+
+@keyframes wall-cta-spark-twinkle {
+  0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(0.7) rotate(0deg); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.25) rotate(90deg); }
 }
 
 .wall-legal {

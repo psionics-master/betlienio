@@ -26,11 +26,16 @@ function getAudio(name) {
   return instances[name];
 }
 
-export function playSfx(name, { volume = 0.6 } = {}) {
+export function playSfx(name, { volume = 0.6, onEnded } = {}) {
   const a = getAudio(name);
   a.volume = volume;
   a.currentTime = 0;
-  a.play().catch(() => {});
+  if (onEnded) {
+    a.addEventListener("ended", onEnded, { once: true });
+  }
+  a.play().catch(() => {
+    if (onEnded) onEnded();
+  });
 }
 
 export function stopSfx(name) {

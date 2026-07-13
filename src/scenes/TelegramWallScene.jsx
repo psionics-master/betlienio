@@ -24,6 +24,7 @@ const ASTEROID_FIELD = [
 
 export default function TelegramWallScene() {
   const [minePressed, setMinePressed] = useState(false);
+  const [launchingBot, setLaunchingBot] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,8 +34,17 @@ export default function TelegramWallScene() {
   }, []);
 
   const pressDecorativeMine = () => {
+    if (launchingBot) return;
     setMinePressed(true);
-    playSfx("miningStart", { volume: 0.5 });
+    setLaunchingBot(true);
+    trackEvent("mine_button_clicked");
+    playSfx("miningStart", {
+      volume: 0.5,
+      onEnded: () => {
+        window.open(BOT_LINK, "_blank", "noopener,noreferrer");
+        setLaunchingBot(false);
+      },
+    });
     setTimeout(() => setMinePressed(false), 160);
   };
 
@@ -66,14 +76,23 @@ export default function TelegramWallScene() {
             <SpinningCoin fast />
           </div>
 
+          <div className="wall-rig-marquee">
+            <div className="wall-rig-marquee__track">
+              <span>{WALL_COPY.marquee}</span>
+              <span aria-hidden="true">{WALL_COPY.marquee}</span>
+            </div>
+          </div>
+
           <button
-            className={`wall-mine-btn${minePressed ? " wall-mine-btn--pressed" : ""}`}
+            className={`wall-mine-btn${minePressed ? " wall-mine-btn--pressed" : ""}${launchingBot ? " wall-mine-btn--launching" : ""}`}
             onClick={pressDecorativeMine}
             type="button"
-            aria-label="Start Mining preview"
+            aria-label="Start Mining and launch the Telegram bot"
+            disabled={launchingBot}
           >
             <img src={startMineImg} alt="Start Mining" className="wall-mine-btn__img" draggable={false} />
             <span className="wall-mine-btn__shimmer" />
+            {launchingBot && <span className="wall-mine-btn__launching">Launching bot…</span>}
           </button>
         </div>
       </div>
@@ -94,8 +113,10 @@ export default function TelegramWallScene() {
           rel="noreferrer"
           onClick={() => trackEvent("telegram_cta_clicked")}
         >
+          <span className="wall-cta__spark wall-cta__spark--1" aria-hidden="true">✦</span>
           <TelegramIcon size={22} />
-          <span>{WALL_COPY.cta}</span>
+          <span className="wall-cta__label">{WALL_COPY.cta}</span>
+          <span className="wall-cta__spark wall-cta__spark--2" aria-hidden="true">✦</span>
         </a>
 
         <p className="wall-legal">{WALL_COPY.legal}</p>
