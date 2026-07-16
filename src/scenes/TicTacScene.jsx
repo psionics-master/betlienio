@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import bgImage from "../assets/desert-night-stars.webp";
 import SceneLogo from "../components/SceneLogo";
+import { useContent } from "../i18n/LanguageContext";
 import { playSfx, stopSfx } from "../utils/sfx";
 import "./TicTacScene.css";
 
@@ -11,6 +12,7 @@ import "./TicTacScene.css";
 // transition into DialogueScene instead of unmounting with this component —
 // this scene just owns the background, timing, and one-off impact FX.
 export default function TicTacScene({ onDone, onPhaseChange }) {
+  const { TICTAC } = useContent();
   const [phase, setPhase] = useState("appear"); // appear -> flight -> crash -> pause
 
   useEffect(() => {
@@ -65,7 +67,7 @@ export default function TicTacScene({ onDone, onPhaseChange }) {
         </>
       )}
 
-      <div className="tictac-skip-hint">tap to skip</div>
+      <div className="tictac-skip-hint">{TICTAC.tapToSkip}</div>
     </div>
   );
 }

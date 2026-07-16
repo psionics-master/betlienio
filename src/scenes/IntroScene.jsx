@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import bgImage from "../assets/desert-night-stars.webp";
 import SceneLogo from "../components/SceneLogo";
-import { INTRO_BEATS } from "../data/content";
+import { useContent } from "../i18n/LanguageContext";
 import { playSfx, stopSfx } from "../utils/sfx";
 import "./IntroScene.css";
 
 export default function IntroScene({ onDone }) {
+  const { INTRO_BEATS } = useContent();
   const [beatIdx, setBeatIdx] = useState(0);
   const beat = INTRO_BEATS[beatIdx];
 

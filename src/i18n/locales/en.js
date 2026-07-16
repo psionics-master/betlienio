@@ -1,4 +1,5 @@
-export const BOT_LINK = "https://t.me/betlienbot?startapp=start";
+// English is the reference locale — every other locale file should mirror
+// this shape exactly (same keys, same array lengths/order).
 
 // Ported verbatim from BetlienFront's src/constants/introContent.js —
 // the two tap-triggered beats before the TicTac shows up.
@@ -116,5 +117,30 @@ export const WALL_COPY = {
   cta: "Launch Telegram Bot",
   legal: "Free-to-play. No purchase required. Betlien Coins hold no monetary value and are not financial advice.",
   marqueeRow1: "BETLIEN  •  AVAILABLE ON TELEGRAM  •  ",
-  marqueeRow2: "MINE THE GALAXY  •  PLAY GAMES  •  WIN BETLIEN COINS  •  WIN $GRAM CRYPTO ON TON NETWORK  •  ",
+  marqueeRow2: "MINE THE GALAXY  •  PLAY GAMES  •  WIN BETLIEN COINS  •  WIN $GRAM COINS  •  ",
+};
+
+// Small UI chrome strings that live outside the narrative content above.
+export const TOPBAR = {
+  brand: "$BETLIEN",
+  brandAria: "Betlien home",
+  skip: "Skip →",
+  openBot: "Open Bot",
+};
+
+export const COVER = {
+  titleAlt: "Betlien — Mine the Galaxy",
+  startMiningAria: "Start Mining",
+  startMiningAlt: "Start Mining",
+  footerTc: "18+ only. Free-to-play. No purchase required. T&C apply.",
+};
+
+export const TICTAC = {
+  tapToSkip: "tap to skip",
+};
+
+export const WALL_UI = {
+  startMiningAlt: "Start Mining",
+  mineBtnAria: "Start Mining and launch the Telegram bot",
+  launchingBot: "Launching bot…",
 };

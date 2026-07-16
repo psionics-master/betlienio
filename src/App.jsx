@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SceneTransition from "./components/SceneTransition";
 import TopBar from "./components/TopBar";
 import PersistentUfo from "./components/PersistentUfo";
@@ -8,13 +8,17 @@ import IntroScene from "./scenes/IntroScene";
 import TicTacScene from "./scenes/TicTacScene";
 import DialogueScene from "./scenes/DialogueScene";
 import TelegramWallScene from "./scenes/TelegramWallScene";
-import { DIALOGUE_SCENES } from "./data/content";
+import { useContent } from "./i18n/LanguageContext";
 import { trackEvent } from "./utils/analytics";
 
 const SCENES = ["cover", "intro", "tictac", "dialogue", "wall"];
-const HYBRID_SCAN_IDX = DIALOGUE_SCENES.findIndex((s) => s.type === "hybridScan");
 
 function App() {
+  const { DIALOGUE_SCENES } = useContent();
+  const HYBRID_SCAN_IDX = useMemo(
+    () => DIALOGUE_SCENES.findIndex((s) => s.type === "hybridScan"),
+    [DIALOGUE_SCENES],
+  );
   const [sceneIdx, setSceneIdx] = useState(0);
   const [tictacPhase, setTictacPhase] = useState("appear");
   const [dialogueIdx, setDialogueIdx] = useState(0);

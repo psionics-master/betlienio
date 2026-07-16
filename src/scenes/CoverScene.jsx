@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import bgImage from "../assets/Cover.webp";
 import titleImg from "../assets/Betlient.webp";
 import btnImg from "../assets/StartMine.webp";
+import { useContent } from "../i18n/LanguageContext";
 import { trackEvent } from "../utils/analytics";
 import { playSfx } from "../utils/sfx";
 import "./CoverScene.css";
@@ -10,6 +11,7 @@ const AUTO_ENTER_DELAY = 4000;
 const HOLO_BARS = 10;
 
 export default function CoverScene({ onDone }) {
+  const { COVER } = useContent();
   const [btnPress, setBtnPress] = useState(false);
   const [holoActive, setHoloActive] = useState(false);
   const [advancing, setAdvancing] = useState(false);
@@ -45,16 +47,16 @@ export default function CoverScene({ onDone }) {
       <img src={bgImage} alt="" className="cover-bg" draggable={false} />
 
       <div className="cover-title-wrap">
-        <img src={titleImg} alt="Betlien — Mine the Galaxy" className="cover-title-img" draggable={false} />
+        <img src={titleImg} alt={COVER.titleAlt} className="cover-title-img" draggable={false} />
       </div>
 
       <button
         className={`cover-mine-btn${btnPress ? " cover-mine-btn--pressed" : ""}`}
         onClick={() => advance("tap")}
         type="button"
-        aria-label="Start Mining"
+        aria-label={COVER.startMiningAria}
       >
-        <img src={btnImg} alt="Start Mining" className="cover-mine-btn__img" draggable={false} />
+        <img src={btnImg} alt={COVER.startMiningAlt} className="cover-mine-btn__img" draggable={false} />
       </button>
 
       {holoActive && (
@@ -66,7 +68,7 @@ export default function CoverScene({ onDone }) {
       )}
 
       <div className="cover-footer">
-        <p className="cover-footer__tc">18+ only. Free-to-play. No purchase required. T&amp;C apply.</p>
+        <p className="cover-footer__tc">{COVER.footerTc}</p>
       </div>
     </div>
   );

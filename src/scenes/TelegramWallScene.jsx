@@ -12,7 +12,8 @@ import BetUfoFlight from "../components/BetUfoFlight";
 import SpinningCoin from "../components/SpinningCoin";
 import SceneLogo from "../components/SceneLogo";
 import TelegramIcon from "../components/TelegramIcon";
-import { BOT_LINK, WALL_COPY } from "../data/content";
+import { BOT_LINK } from "../data/constants";
+import { useContent } from "../i18n/LanguageContext";
 import { trackEvent } from "../utils/analytics";
 import { playSfx } from "../utils/sfx";
 import "./TelegramWallScene.css";
@@ -23,6 +24,7 @@ const ASTEROID_FIELD = [
 ];
 
 export default function TelegramWallScene() {
+  const { WALL_COPY, WALL_UI } = useContent();
   const [minePressed, setMinePressed] = useState(false);
   const [launchingBot, setLaunchingBot] = useState(false);
 
@@ -95,12 +97,12 @@ export default function TelegramWallScene() {
             className={`wall-mine-btn${minePressed ? " wall-mine-btn--pressed" : ""}${launchingBot ? " wall-mine-btn--launching" : ""}`}
             onClick={pressDecorativeMine}
             type="button"
-            aria-label="Start Mining and launch the Telegram bot"
+            aria-label={WALL_UI.mineBtnAria}
             disabled={launchingBot}
           >
-            <img src={startMineImg} alt="Start Mining" className="wall-mine-btn__img" draggable={false} />
+            <img src={startMineImg} alt={WALL_UI.startMiningAlt} className="wall-mine-btn__img" draggable={false} />
             <span className="wall-mine-btn__shimmer" />
-            {launchingBot && <span className="wall-mine-btn__launching">Launching bot…</span>}
+            {launchingBot && <span className="wall-mine-btn__launching">{WALL_UI.launchingBot}</span>}
           </button>
         </div>
       </div>

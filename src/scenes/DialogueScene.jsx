@@ -3,7 +3,7 @@ import bgImage from "../assets/desert-night-stars_up.webp";
 import blurppzDefault from "../assets/Blurppz.webp";
 import blurppzThink from "../assets/BlurppzThink.webp";
 import blurppzCoin from "../assets/BlurppzCoin.webp";
-import { DIALOGUE_SCENES, TAP_TO_CONTINUE_LABEL } from "../data/content";
+import { useContent } from "../i18n/LanguageContext";
 import { playSfx, stopSfx } from "../utils/sfx";
 import "./DialogueScene.css";
 
@@ -16,6 +16,7 @@ const PORTRAITS = {
 const TYPE_MS = 18;
 
 export default function DialogueScene({ onDone, onSceneIdxChange }) {
+  const { DIALOGUE_SCENES, TAP_TO_CONTINUE_LABEL } = useContent();
   const [sceneIdx, setSceneIdx] = useState(0);
   const [lineIdx, setLineIdx] = useState(0);
   const [typed, setTyped] = useState("");
