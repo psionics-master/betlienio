@@ -28,7 +28,6 @@ export default function LanguageSwitcher() {
         aria-expanded={open}
         aria-label="Change language"
       >
-        <span aria-hidden="true">{current.flag}</span>
         <span>{current.code.toUpperCase()}</span>
       </button>
 
@@ -46,8 +45,7 @@ export default function LanguageSwitcher() {
                   setOpen(false);
                 }}
               >
-                <span aria-hidden="true">{lang.flag}</span>
-                <span>{lang.code.toUpperCase()}</span>
+                {lang.code.toUpperCase()}
               </button>
             </li>
           ))}

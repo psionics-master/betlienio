@@ -2,8 +2,11 @@
 // template), registering it in LanguageContext.jsx's LOCALES map, and adding
 // its code + label here.
 export const SUPPORTED_LANGUAGES = [
-  { code: "en", label: "English", flag: "🇬🇧" },
-  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "en", label: "English" },
+  { code: "ru", label: "Русский" },
+  { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
+  { code: "ja", label: "日本語" },
 ];
 
 export const LANGUAGE_CODES = SUPPORTED_LANGUAGES.map((l) => l.code);

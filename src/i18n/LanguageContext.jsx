@@ -3,8 +3,11 @@ import { DEFAULT_LANGUAGE, LANGUAGE_CODES, SUPPORTED_LANGUAGES } from "./languag
 import { detectLanguage } from "./detectLanguage";
 import * as en from "./locales/en";
 import * as ru from "./locales/ru";
+import * as es from "./locales/es";
+import * as fr from "./locales/fr";
+import * as ja from "./locales/ja";
 
-const LOCALES = { en, ru };
+const LOCALES = { en, ru, es, fr, ja };
 const STORAGE_KEY = "betlien_lang";
 
 const LanguageContext = createContext(null);
