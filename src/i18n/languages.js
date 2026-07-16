@@ -7,6 +7,7 @@ export const SUPPORTED_LANGUAGES = [
   { code: "es", label: "Español" },
   { code: "fr", label: "Français" },
   { code: "ja", label: "日本語" },
+  { code: "uk", label: "Українська" },
 ];
 
 export const LANGUAGE_CODES = SUPPORTED_LANGUAGES.map((l) => l.code);

@@ -6,8 +6,9 @@ import * as ru from "./locales/ru";
 import * as es from "./locales/es";
 import * as fr from "./locales/fr";
 import * as ja from "./locales/ja";
+import * as uk from "./locales/uk";
 
-const LOCALES = { en, ru, es, fr, ja };
+const LOCALES = { en, ru, es, fr, ja, uk };
 const STORAGE_KEY = "betlien_lang";
 
 const LanguageContext = createContext(null);
