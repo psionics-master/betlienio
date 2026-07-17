@@ -7,8 +7,10 @@ import * as es from "./locales/es";
 import * as fr from "./locales/fr";
 import * as ja from "./locales/ja";
 import * as uk from "./locales/uk";
+import * as he from "./locales/he";
+import * as ar from "./locales/ar";
 
-const LOCALES = { en, ru, es, fr, ja, uk };
+const LOCALES = { en, ru, es, fr, ja, uk, he, ar };
 const STORAGE_KEY = "betlien_lang";
 
 const LanguageContext = createContext(null);
@@ -27,6 +29,7 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.lang = language;
+    document.documentElement.dir = SUPPORTED_LANGUAGES.find((l) => l.code === language)?.dir || "ltr";
     try {
       window.localStorage.setItem(STORAGE_KEY, language);
     } catch {

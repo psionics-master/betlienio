@@ -8,6 +8,8 @@ export const SUPPORTED_LANGUAGES = [
   { code: "fr", label: "Français" },
   { code: "ja", label: "日本語" },
   { code: "uk", label: "Українська" },
+  { code: "he", label: "עברית", dir: "rtl" },
+  { code: "ar", label: "العربية", dir: "rtl" },
 ];
 
 export const LANGUAGE_CODES = SUPPORTED_LANGUAGES.map((l) => l.code);
