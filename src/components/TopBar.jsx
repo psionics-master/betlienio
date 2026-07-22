@@ -1,5 +1,6 @@
 import { BOT_LINK } from "../data/constants";
 import { useContent } from "../i18n/LanguageContext";
+import { trackEvent } from "../utils/analytics";
 import coinImg from "../assets/BetlienGCoin.webp";
 import LanguageSwitcher from "./LanguageSwitcher";
 import TelegramIcon from "./TelegramIcon";
@@ -20,7 +21,13 @@ export default function TopBar({ onSkip, onHome, showSkip }) {
             {TOPBAR.skip}
           </button>
         )}
-        <a className="topbar-bot" href={BOT_LINK} target="_blank" rel="noreferrer">
+        <a
+          className="topbar-bot"
+          href={BOT_LINK}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => trackEvent("telegram_cta_clicked")}
+        >
           <TelegramIcon size={22} />
           <span>{TOPBAR.openBot}</span>
         </a>
