@@ -129,7 +129,12 @@ export default function TelegramWallScene() {
           <span className="wall-cta__spark wall-cta__spark--2" aria-hidden="true">✦</span>
         </a>
 
-        <p className="wall-legal">{WALL_COPY.legal}</p>
+        <p className="wall-legal">
+          <a href="/terms.html" className="wall-legal__age-badge" target="_blank" rel="noopener">
+            18+
+          </a>{" "}
+          {WALL_COPY.legal}
+        </p>
       </div>
     </div>
   );

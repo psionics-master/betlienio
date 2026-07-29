@@ -379,3 +379,15 @@
   color: rgba(255, 255, 255, 0.5);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
+
+.wall-legal__age-badge {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wall-legal__age-badge:hover,
+.wall-legal__age-badge:focus-visible {
+  color: var(--cyan, #00e0ff);
+}
