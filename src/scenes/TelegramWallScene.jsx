@@ -130,10 +130,9 @@ export default function TelegramWallScene() {
         </a>
 
         <p className="wall-legal">
-          <a href="/terms.html" className="wall-legal__age-badge" target="_blank" rel="noopener">
-            18+
-          </a>{" "}
-          {WALL_COPY.legal}
+          <a href="/terms.html" className="wall-legal__link" target="_blank" rel="noopener">
+            18+ {WALL_COPY.legal}
+          </a>
         </p>
       </div>
     </div>

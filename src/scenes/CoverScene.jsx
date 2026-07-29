@@ -69,10 +69,9 @@ export default function CoverScene({ onDone }) {
 
       <div className="cover-footer">
         <p className="cover-footer__tc">
-          <a href="/terms.html" className="cover-footer__age-badge" target="_blank" rel="noopener">
-            18+
-          </a>{" "}
-          {COVER.footerTc}
+          <a href="/terms.html" className="cover-footer__tc-link" target="_blank" rel="noopener">
+            {COVER.footerTc}
+          </a>
         </p>
       </div>
     </div>

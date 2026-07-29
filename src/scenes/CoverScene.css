@@ -109,18 +109,17 @@
 .cover-footer__tc {
   margin: 0;
   font-size: 11px;
-  color: var(--gold);
   font-weight: 700;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
-.cover-footer__age-badge {
+.cover-footer__tc-link {
   color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.cover-footer__age-badge:hover,
-.cover-footer__age-badge:focus-visible {
+.cover-footer__tc-link:hover,
+.cover-footer__tc-link:focus-visible {
   color: var(--cyan);
 }
