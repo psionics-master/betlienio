@@ -47,3 +47,11 @@
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Serve legal PDFs inline in the browser instead of forcing a download.
+[[headers]]
+  for = "/legal/*.pdf"
+  [headers.values]
+    Content-Disposition = "inline"
+    Content-Type = "application/pdf"
+    Cache-Control = "public, max-age=3600"

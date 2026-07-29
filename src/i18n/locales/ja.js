@@ -113,7 +113,7 @@ export const WALL_COPY = {
   cta: "Telegramボットを起動",
   legal: "基本無料プレイ。購入は不要です。Betlien Coinsに金銭的価値はなく、投資助言ではありません。",
   marqueeRow1: "BETLIEN  •  Telegramで利用可能  •  ",
-  marqueeRow2: "銀河をマイニング  •  ゲームで遊ぶ  •  BETLIEN COINSを獲得  •  $GRAM COINSを獲得  •  ",
+  marqueeRow2: "銀河をマイニング  •  ゲームで遊ぶ  •  BETLIEN COINSを獲得  •  ",
 };
 
 export const TOPBAR = {

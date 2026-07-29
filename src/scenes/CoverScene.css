@@ -113,3 +113,14 @@
   font-weight: 700;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
+
+.cover-footer__age-badge {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cover-footer__age-badge:hover,
+.cover-footer__age-badge:focus-visible {
+  color: var(--cyan);
+}

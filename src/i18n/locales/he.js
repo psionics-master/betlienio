@@ -113,7 +113,7 @@ export const WALL_COPY = {
   cta: "הפעל את בוט הטלגרם",
   legal: "משחק חינמי. אין צורך ברכישה. למטבעות Betlien אין ערך כספי והם אינם ייעוץ פיננסי.",
   marqueeRow1: "BETLIEN  •  זמין בטלגרם  •  ",
-  marqueeRow2: "כרה את הגלקסיה  •  שחק משחקים  •  זכה במטבעות BETLIEN  •  זכה במטבעות $GRAM  •  ",
+  marqueeRow2: "כרה את הגלקסיה  •  שחק משחקים  •  זכה במטבעות BETLIEN  •  ",
 };
 
 export const TOPBAR = {

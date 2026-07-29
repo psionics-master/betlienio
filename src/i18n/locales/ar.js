@@ -113,7 +113,7 @@ export const WALL_COPY = {
   cta: "تشغيل بوت تيليجرام",
   legal: "لعبة مجانية. لا حاجة للشراء. عملات Betlien ليست لها قيمة نقدية وليست نصيحة مالية.",
   marqueeRow1: "BETLIEN  •  متاح على تيليجرام  •  ",
-  marqueeRow2: "عدّن المجرة  •  العب الألعاب  •  اربح عملات BETLIEN  •  اربح عملات $GRAM  •  ",
+  marqueeRow2: "عدّن المجرة  •  العب الألعاب  •  اربح عملات BETLIEN  •  ",
 };
 
 export const TOPBAR = {

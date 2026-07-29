@@ -113,7 +113,7 @@ export const WALL_COPY = {
   cta: "Iniciar Bot de Telegram",
   legal: "Juego gratuito. No se requiere compra. Las monedas Betlien no tienen valor monetario y no constituyen asesoría financiera.",
   marqueeRow1: "BETLIEN  •  DISPONIBLE EN TELEGRAM  •  ",
-  marqueeRow2: "MINA LA GALAXIA  •  JUEGA  •  GANA BETLIEN COINS  •  GANA $GRAM COINS  •  ",
+  marqueeRow2: "MINA LA GALAXIA  •  JUEGA  •  GANA BETLIEN COINS  •  ",
 };
 
 export const TOPBAR = {

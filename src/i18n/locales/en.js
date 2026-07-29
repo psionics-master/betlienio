@@ -117,7 +117,7 @@ export const WALL_COPY = {
   cta: "Launch Telegram Bot",
   legal: "Free-to-play. No purchase required. Betlien Coins hold no monetary value and are not financial advice.",
   marqueeRow1: "BETLIEN  •  AVAILABLE ON TELEGRAM  •  ",
-  marqueeRow2: "MINE THE GALAXY  •  PLAY GAMES  •  WIN BETLIEN COINS  •  WIN $GRAM COINS  •  ",
+  marqueeRow2: "MINE THE GALAXY  •  PLAY GAMES  •  WIN BETLIEN COINS  •  ",
 };
 
 // Small UI chrome strings that live outside the narrative content above.

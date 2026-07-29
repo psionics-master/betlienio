@@ -113,7 +113,7 @@ export const WALL_COPY = {
   cta: "Запустить Telegram-бота",
   legal: "Бесплатная игра. Покупки не требуются. Монеты Betlien не имеют денежной стоимости и не являются финансовым советом.",
   marqueeRow1: "BETLIEN  •  ДОСТУПНО В TELEGRAM  •  ",
-  marqueeRow2: "МАЙНИ ГАЛАКТИКУ  •  ИГРАЙ  •  ВЫИГРЫВАЙ BETLIEN COINS  •  ВЫИГРЫВАЙ $GRAM COINS  •  ",
+  marqueeRow2: "МАЙНИ ГАЛАКТИКУ  •  ИГРАЙ  •  ВЫИГРЫВАЙ BETLIEN COINS  •  ",
 };
 
 export const TOPBAR = {
