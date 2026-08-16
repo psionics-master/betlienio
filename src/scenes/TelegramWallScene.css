@@ -371,7 +371,7 @@
   0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(0.7) rotate(0deg); }
   50% { opacity: 1; transform: translateY(-50%) scale(1.25) rotate(90deg); }
 }
-
+OK. 
 .wall-legal {
   margin: 12px 0 0;
   font-size: 10px;
